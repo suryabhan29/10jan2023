@@ -16,13 +16,91 @@
         </script>
     </head>
     <body>
+        
         <div class="container">
             <div class="row">
-                <div class="col-4 s_tbdr">A</div>
-                <div class="col-8 s_tbdr">B</div>
+                <div class="col-4 s_tbdr">
+                    <form>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Email address</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3 form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="col-8 s_tbdr">
+                    <table class="table surajtable">
+                        <thead>
+                          <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">email</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <script src="./js/script.js"></script>
+        <script>
+           window.alert("are you sure you see my assignment")
+            //before the closing of body tag
+            //PO.then().then().catch();
+            /*
+            fetch('http://example.com/movies.json')
+            .then((response) => response.json())
+            .then((data) => console.log(data));
+            
+            */
+           let y = document.querySelector('table.surajtable > tbody');
+
+            fetch('https://reqres.in/api/users?page=2')
+            .then((res)=>{   //response is a formal argument
+                // every function return something
+                return res.json();
+            })      
+            .then((data)=>{
+               
+                console.log( data.data);
+                let tr = ``;
+                for (variable of data.data) {
+                // code block to be executed
+                tr += `<tr>
+                            <th scope="row">${variable.id}</th>
+                            <td>${variable.first_name}</td>
+                            <td>${variable.last_name}</td>
+                            <td>${variable.email}</td>
+                            <td>
+                                <button class="btn btn-sm btn-success">View</button>
+                                <button class="btn btn-sm btn-primary">Edit</button>
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </td>
+                        </tr>`;
+                console.log(variable.first_name);
+               
+                
+                }
+                y.innerHTML = tr;
+            })
+            .catch(function (err){
+                console.log(err);
+            });
+        </script>
     </body>
 </html>

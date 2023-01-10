@@ -1,0 +1,8 @@
+backend engineer ---> api  ---> frontend engineer
+
+row = parent
+col = childern
+
+bootstrap work on 12 colom
+
+container lene se website full width me nhi jati he
